@@ -1,0 +1,3 @@
+include pynads/*so
+include src/
+include nads/

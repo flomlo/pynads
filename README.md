@@ -61,13 +61,15 @@ to the generice x86-64 package delivered with `pynads` for each of use. On my se
 
 To do this, get `pybind11` (via github/pip) and run the following line of code
 ```
-g++ -O3 -Wall -Werror --shared -std=c++14 -fPIC `python3 -m pybind11 --includes` nads_bindings.cpp -o nads_bind`python3-config --extension-suffix
+g++ -march native -O3 -Wall -Werror --shared -std=c++14 -fPIC `python3 -m pybind11 --includes` nads_bindings.cpp -o nads_bind`python3-config --extension-suffix
 ```
 in the folder `nads/`. Then move the shared lib in the same folder where `pynads.py` resides.
 
 
 ### ToDo:
 -[ ] Automate build process for architecture optimized library as described above.
+
 -[ ] Write a paper about the algorithm and link it in the documentation
+
 -[ ] Write a few tests or something
 

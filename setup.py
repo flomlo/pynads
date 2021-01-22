@@ -3,12 +3,13 @@ from setuptools import setup, Extension, find_packages
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-nads_module = Extension('nads',
-        sources = ['src/nads_binding.cpp'])
+#nads_module = Extension('nads',
+#        include_dirs=[os.path.join(this_dir, 'include')],
+#        sources=[os.path.join(this_dir, 'src', 'nads_binding.cpp')]
 
 setup(
     name="pynads", 
-    version="0.1.0",
+    version="0.1.1",
     author="Florian Unger",
     author_email="florian.unger@posteo.net",
     license='GPLv3',
@@ -23,9 +24,10 @@ setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Programming Language :: Python :: 3",
         'Programming Language :: C++',
-        "Operating System :: Linux",
+        'Operating System :: POSIX :: Linux',
     ],
     python_requires='>=3.6',
     install_requires=['numpy >= 1.17.0'],
-    ext_modules = [nads_module]
+#    ext_modules = [nads_module],
+    include_package_data=True
 )
