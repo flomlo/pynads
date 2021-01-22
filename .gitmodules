@@ -1,0 +1,3 @@
+[submodule "nads"]
+	path = nads
+	url = https://github.com/flomlo/nads
