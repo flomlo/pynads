@@ -1,7 +1,10 @@
 from setuptools import setup, Extension, find_packages
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+with open('pynads/_version.py', 'r') as f:
+    exec(f.read())
+
+with open("README.md", "r", encoding="utf-8") as f:
+    long_description = f.read()
 
 #nads_module = Extension('nads',
 #        include_dirs=[os.path.join(this_dir, 'include')],
@@ -9,7 +12,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="pynads", 
-    version="0.1.1",
+    version=__version__,
     author="Florian Unger",
     author_email="florian.unger@posteo.net",
     license='GPLv3',

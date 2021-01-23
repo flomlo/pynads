@@ -1,7 +1,7 @@
 """Implementation of the python API for the nads_count of the nads C++ library."""
 
-from _utils import _extract_unweighted_graph
-from nads_bind import compute_nads
+from ._utils import _extract_unweighted_graph
+from .nads_bind import compute_nads
 
 
 def nads(adjacency_matrix, directed=True, min_dimension=1, max_dimension=-1):
