@@ -1,5 +1,5 @@
 ## What is this?
-The packacke `pynads` binds `nads`, a C++ implementation that computes the number of almosts-d-simplices.
+The packacke `pynads` binds `nads`, a C++ implementation that computes the number of almosts-d-simplices in a digraph, to python.
 
 
 ### almost-d-simplices
