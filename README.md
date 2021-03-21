@@ -55,15 +55,15 @@ This results in a list of Integers `res`: Each entry `res[i]` corresponds to the
 in the graph `g`. 
 
 
-## Compiling C++ code with `-march=native` for higher performance:
+# Compiling C++ code with `-march=native` for higher performance:
 Advanced users my generate their own `nads_bind.$PYTHON_VERSION.so` which is probably faster on their own CPU, compared
 to the generice x86-64 package delivered with `pynads` for each of use. On my setup this results in ~15% faster code.
 
 To do this, get `pybind11` (via github/pip) and run the following line of code
 ```
-g++ -march=native -O3 -Wall -Werror --shared -std=c++14 -fPIC `python3 -m pybind11 --includes` nads_bindings.cpp -o nads_bind`python3-config --extension-suffix
+g++ -march=native -O3 -Wall -Werror --shared -std=c++14 -fPIC `python3 -m pybind11 --includes` src/nads_bindings.cpp -o pynads/nads_bind`python3-config --extension-suffix`
 ```
-in the folder `nads/`. Then move the shared lib in the same folder where `pynads.py` resides.
+in the top folder. 
 
 
 ### ToDo:
