@@ -42,7 +42,7 @@ TODO: Write paper/doku in LaTex.
 ## Installation
 `pip install pynads` should be enough.
 
-### Compiling C++ code with `-march=native` for higher performance:
+#### Compiling C++ code with `-march=native` for higher performance:
 Advanced users my generate their own `nads_bind.$PYTHON_VERSION.so` which is probably faster on their own CPU, compared
 to the non-optimised module automatically compiled during installation. On my setup this results in ~15% faster code.
 ```
