@@ -1,3 +1,2 @@
-include pynads/*so
-include src/
-include nads/
+graft src/
+graft nads/

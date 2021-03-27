@@ -1,4 +1,8 @@
+import os
 from setuptools import setup, Extension, find_packages
+from setuptools.command.build_ext import build_ext
+from distutils.version import LooseVersion
+from pybind11.setup_helpers import Pybind11Extension, build_ext
 
 with open('pynads/_version.py', 'r') as f:
     exec(f.read())
@@ -6,9 +10,9 @@ with open('pynads/_version.py', 'r') as f:
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
-#nads_module = Extension('nads',
-#        include_dirs=[os.path.join(this_dir, 'include')],
-#        sources=[os.path.join(this_dir, 'src', 'nads_binding.cpp')]
+nads_bindings_builder = Pybind11Extension("pynads/nads_bind", ['src/nads_bindings.cpp'],
+        extra_compile_args = ['-std=c++14', '-DMANY_VERTICES'])
+
 
 setup(
     name="pynads", 
@@ -30,7 +34,7 @@ setup(
         'Operating System :: POSIX :: Linux',
     ],
     python_requires='>=3.6',
-    install_requires=['numpy >= 1.17.0'],
-#    ext_modules = [nads_module],
+    install_requires=['numpy >= 1.17.0', 'setuptools', 'pybind11 >= 2.6.0'],
+    ext_modules=[nads_bindings_builder],
     include_package_data=True
 )

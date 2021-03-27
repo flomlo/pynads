@@ -46,7 +46,7 @@ TODO: Write paper/doku in LaTex.
 Advanced users my generate their own `nads_bind.$PYTHON_VERSION.so` which is probably faster on their own CPU, compared
 to the non-optimised module automatically compiled during installation. On my setup this results in ~15% faster code.
 ```
-g++ -march=native -O3 -Wall -Werror --shared -std=c++14 -fPIC `python3 -m pybind11 --includes` src/nads_bindings.cpp -o nads_bind`python3-config --extension-suffix
+g++ -march=native -O3 -Wall -Werror --shared -std=c++14 -fPIC `python3 -m pybind11 --includes` src/nads_bindings.cpp -o nads_bind`python3-config --extension-suffix`
 ```
 and push the resulting `nads_bind.$PYTHON_VERSION.so` to `INSTALL_DIR/site-packages/pynads/`
 
