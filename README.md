@@ -64,7 +64,7 @@ in the graph `g`.
 
 
 ## ToDo:
--[ ] Automate build process for architecture optimized library as described above.
+-[x] Automate build process with `pip`
 
 -[ ] Write a paper about the algorithm and link it in the documentation
 
