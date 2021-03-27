@@ -1,8 +1,8 @@
-### What is this?
-The packacke `pynads` binds `nads`, a C++ implementation that computes the number of almosts-d-simplices.
+## What is this?
+The packacke `pynads` binds `nads`, a C++ implementation that computes the number of almosts-d-simplices in a digraph, to python.
 
 
-## almost-d-simplices
+### almost-d-simplices
 In a nutshell:
 
 Assume you have directed unweighted graph G=(V,E). Then a d-clique are d vertices, where each vertex is directly
@@ -26,7 +26,7 @@ d-simplex.
 Some people (e.g. me) find the number of almost-d-simplices in a big graph interesting.
 
 
-## Performance
+### Performance
 This package allows one to calculate this numbers on sparse graphs in a highly efficient manner, thanks to the substantially optimised underlying C++
 implementation. 
 
@@ -39,11 +39,19 @@ This is notably faster than my previous native-python implementation, which woul
 TODO: Write paper/doku in LaTex.
 
 
-### Installation
+## Installation
 `pip install pynads` should be enough.
 
+### Compiling C++ code with `-march=native` for higher performance:
+Advanced users my generate their own `nads_bind.$PYTHON_VERSION.so` which is probably faster on their own CPU, compared
+to the non-optimised module automatically compiled during installation. On my setup this results in ~15% faster code.
+```
+g++ -march=native -O3 -Wall -Werror --shared -std=c++14 -fPIC `python3 -m pybind11 --includes` src/nads_bindings.cpp -o nads_bind`python3-config --extension-suffix
+```
+and push the resulting `nads_bind.$PYTHON_VERSION.so` to `INSTALL_DIR/site-packages/pynads/`
 
-### Usage
+
+## Usage
 With `g` being a (directed) graph without self-loops, run:
 
 ```
@@ -55,18 +63,7 @@ This results in a list of Integers `res`: Each entry `res[i]` corresponds to the
 in the graph `g`. 
 
 
-# Compiling C++ code with `-march=native` for higher performance:
-Advanced users my generate their own `nads_bind.$PYTHON_VERSION.so` which is probably faster on their own CPU, compared
-to the generice x86-64 package delivered with `pynads` for each of use. On my setup this results in ~15% faster code.
-
-To do this, get `pybind11` (via github/pip) and run the following line of code
-```
-g++ -march=native -O3 -Wall -Werror --shared -std=c++14 -fPIC `python3 -m pybind11 --includes` src/nads_bindings.cpp -o pynads/nads_bind`python3-config --extension-suffix`
-```
-in the top folder. 
-
-
-### ToDo:
+## ToDo:
 -[ ] Automate build process for architecture optimized library as described above.
 
 -[ ] Write a paper about the algorithm and link it in the documentation
